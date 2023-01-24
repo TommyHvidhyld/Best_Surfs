@@ -8,6 +8,10 @@ App for information on surf locations - Project 3
 - [GitHub | surfspots.csv](https://github.com/jcconnell/msw/blob/master/data/surfspots.csv)
 
 # Analysis
+- Clean, modify and filter the data using Pandas and Jupyter notebook
+- Use PostgreSQL as the database
+- HTML, CSS and JavaScript on the front end
+- Use D3, Leaflet and Bootstrap to visualize the data
 
 # Built With
 - [Python](https://www.python.org/)
