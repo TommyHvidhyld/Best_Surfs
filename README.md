@@ -1,17 +1,17 @@
 # Surf_App
 App for information on surf locations - Project 3
 
-### Description
+# Description
 
-### Data Sources
+# Data Sources
 [stormglass.io | Global Weather API](https://stormglass.io/)
-[GitHub | surfspots.csv] (https://github.com/jcconnell/msw/blob/master/data/surfspots.csv)
+[GitHub | surfspots.csv](https://github.com/jcconnell/msw/blob/master/data/surfspots.csv)
 
-### Analysis
+# Analysis
 
-### Built With
+# Built With
 
-### Team
+# Team
 - Tommy Hvidhyld
 - Taylor Marino
 - Conor Chapman
