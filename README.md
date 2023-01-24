@@ -4,12 +4,16 @@ App for information on surf locations - Project 3
 # Description
 
 # Data Sources
-[stormglass.io | Global Weather API](https://stormglass.io/)
-[GitHub | surfspots.csv](https://github.com/jcconnell/msw/blob/master/data/surfspots.csv)
+- [stormglass.io | Global Weather API](https://stormglass.io/)
+- [GitHub | surfspots.csv](https://github.com/jcconnell/msw/blob/master/data/surfspots.csv)
 
 # Analysis
 
 # Built With
+- [Python](https://www.python.org/)
+- [APEXCHARTS.JS](https://apexcharts.com/)
+- 
+- 
 
 # Team
 - Tommy Hvidhyld
