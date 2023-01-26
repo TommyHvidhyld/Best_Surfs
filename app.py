@@ -11,7 +11,7 @@ from sqlalchemy import create_engine, func
 from flask import Flask, jsonify
 
 # reflect an existing database into a new model
-engine = create_engine("postgresql+psycopg2://postgres:postgres@localhost:5432/surf_DB")
+engine = create_engine("postgresql+psycopg2://postgres:postgres@localhost:5432/surf_DB", pool_pre_ping=True)
 Base = automap_base()
 Base.prepare(autoload_with=engine)
 Surf = Base.classes.current_surf
