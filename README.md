@@ -22,7 +22,7 @@ App for information on surf locations - Project 3
 - [Leaflet](https://leafletjs.com/)
 - [APEXCHARTS.JS](https://apexcharts.com/)
 - [Bootstrap](https://getbootstrap.com/)
-- 
+- [d3](https://d3js.org/)
 
 # Team
 - Tommy Hvidhyld
