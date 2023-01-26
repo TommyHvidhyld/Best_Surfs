@@ -14,9 +14,12 @@ App for information on surf locations - Project 3
 - Use D3, Leaflet and Bootstrap to visualize the data
 
 # Built With
+- [Pandas](https://pandas.pydata.org/)
 - [Python](https://www.python.org/)
+- [Flask](https://flask.palletsprojects.com/en/2.2.x/)
+- [Leaflet](https://leafletjs.com/)
 - [APEXCHARTS.JS](https://apexcharts.com/)
-- 
+- [Bootstrap](https://getbootstrap.com/)
 - 
 
 # Team
