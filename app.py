@@ -7,7 +7,7 @@ import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
-
+from flask_cors import CORS
 from flask import Flask, jsonify
 
 # reflect an existing database into a new model
@@ -20,7 +20,7 @@ Surf = Base.classes.current_surf
 # Flask Setup
 #################################################
 app = Flask(__name__)
-
+CORS(app)
 #################################################
 # Flask Routes
 #################################################
