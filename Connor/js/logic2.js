@@ -3,6 +3,7 @@ let streetmap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 });
 
+
 // Initialize all the LayerGroups that we'll use.
 let layers = {
   city: new L.LayerGroup(),
@@ -135,40 +136,40 @@ let icons = {
   })
 };
 
-function createMarkers(response) {
+// function createMarkers(response) {
 
-    // Pull the "stations" property from response.data.
-    let locations = response.data.locations;
+//     // Pull the "stations" property from response.data.
+//     let locations = response.data.locations;
   
-    // Initialize an array to hold bike markers.
-    let cityMarkers = [];
+//     // Initialize an array to hold bike markers.
+//     let cityMarkers = [];
     
-    // forEach version
-    // stations.forEach(station => {
+//     // forEach version
+//     // stations.forEach(station => {
       
-    //   let bikeMarker = L.marker([station.lat, station.lon])
-    //     .bindPopup("<h3>" + station.name + "<h3><h3>Capacity: " + station.capacity + "</h3>");
+//     //   let bikeMarker = L.marker([station.lat, station.lon])
+//     //     .bindPopup("<h3>" + station.name + "<h3><h3>Capacity: " + station.capacity + "</h3>");
   
-    //   // Add the marker to the bikeMarkers array.
-    //   bikeMarkers.push(bikeMarker);
-    // });
+//     //   // Add the marker to the bikeMarkers array.
+//     //   bikeMarkers.push(bikeMarker);
+//     // });
   
-    // Loop through the stations array.
-    for (var index = 0; index < locations.length; index++) {
-      let location = locations[index];
+//     // Loop through the stations array.
+//     for (let index = 0; index < locations.length; index++) {
+//       let location = locations[index];
   
-      // For each station, create a marker, and bind a popup with the station's name.
-      let cityMarker = L.marker([locations.lat, locations.lon])
-        .bindPopup("<h3>" + location.pressure + "<h3><h3>Capacity: " + location.gust + "</h3>");
+//       // For each station, create a marker, and bind a popup with the station's name.
+//       let cityMarker = L.marker([locations.latitude, locations.longitude])
+//         .bindPopup("<h3>" + location.spot + "<h3><h3>Capacity: " + location.gust + "</h3>");
   
-      // Add the marker to the bikeMarkers array.
-      cityMarkers.push(cityMarker);
-    }
+//       // Add the marker to the bikeMarkers array.
+//       cityMarkers.push(cityMarker);
+//     }
   
-    // Create a layer group that's made from the bike markers array, and pass it to the createMap function.
-    createMap(L.layerGroup(cityMarkers));
-  }
+//     // Create a layer group that's made from the bike markers array, and pass it to the createMap function.
+//     createMap(L.layerGroup(cityMarkers));
+//   }
+
   
-  
-  // Perform an API call to the Citi Bike API to get the station information. Call createMarkers when it completes.
-  d3.json("https://gbfs.citibikenyc.com/gbfs/en/station_information.json").then(data => createMarkers(data));
+//   // Perform an API call to the Citi Bike API to get the station information. Call createMarkers when it completes.
+//   d3.json("http://127.0.0.1:5000/api/v1.0/names").then(data => createMarkers(data));
