@@ -11,7 +11,8 @@ from sqlalchemy import create_engine, func
 from flask import Flask, jsonify
 
 # reflect an existing database into a new model
-engine = create_engine("postgresql+psycopg2://postgres:postgres@localhost:5432/surf_DB", pool_pre_ping=True)
+engine = create_engine("sqlite:///surf.sqlite") 
+# , pool_pre_ping=True)
 Base = automap_base()
 Base.prepare(autoload_with=engine)
 Surf = Base.classes.current_surf
@@ -19,13 +20,6 @@ Surf = Base.classes.current_surf
 # Flask Setup
 #################################################
 app = Flask(__name__)
-
-# def get_db_connection():
-#     conn = psycopg2.connect(host='localhost',
-#                             database='surf_DB',
-#                             user='postgres',
-#                             password='postgres')
-#     return conn
 
 #################################################
 # Flask Routes
@@ -36,24 +30,21 @@ def welcome():
     """List all available api routes."""
     return (
         f"Available Routes:<br/>"
-        f"/api/v1.0/names<br/>"
-        f"/api/v1.0/passengers"
+        f"/api/v1.0/surf<br/>"
     )
 
-@app.route('/api/v1.0/names')
+@app.route('/api/v1.0/surf')
 def names():
     # Create our session (link) from Python to the DB
     session = Session(engine)
 
-    """Return a list of all passenger names"""
+    """Return a list of all surf data"""
     # Query all passengers
     results = session.query(Surf.index,Surf.spot,Surf.longitude,Surf.latitude,Surf.spot_id,Surf.wind_speed,Surf.wind_direction,
         Surf.wave_height,Surf.air_temp,Surf.water_temp,Surf.cloud_cover,Surf.gust,Surf.precipitation,Surf.visibility,Surf.wave_direction).all()
 
     session.close()
 
-    # Convert list of tuples into normal list
-    # surf_table = list(np.ravel(results))
     surf_table = []
     for index, spot, longitude, latitude, spot_id, wind_speed, wind_direction, wave_height, air_temp, water_temp, cloud_cover, gust, precipitation, visibility, wave_direction in results:
         surf_dict = {}
@@ -75,15 +66,6 @@ def names():
         surf_table.append(surf_dict)
 
     return jsonify(surf_table)
-# def index():
-#     conn = get_db_connection()
-#     cur = conn.cursor()
-#     cur.execute('SELECT * FROM current_surf;')
-#     surf = cur.fetchall()
-#     cur.close()
-#     conn.close()
-#     return render_template('index.html', surf=surf)
-
 
 if __name__ == '__main__':
     app.run()
