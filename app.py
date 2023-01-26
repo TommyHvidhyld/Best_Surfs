@@ -47,14 +47,34 @@ def names():
 
     """Return a list of all passenger names"""
     # Query all passengers
-    results = session.query(Surf.spot).all()
+    results = session.query(Surf.index,Surf.spot,Surf.longitude,Surf.latitude,Surf.spot_id,Surf.wind_speed,Surf.wind_direction,
+        Surf.wave_height,Surf.air_temp,Surf.water_temp,Surf.cloud_cover,Surf.gust,Surf.precipitation,Surf.visibility,Surf.wave_direction).all()
 
     session.close()
 
     # Convert list of tuples into normal list
-    all_names = list(np.ravel(results))
+    # surf_table = list(np.ravel(results))
+    surf_table = []
+    for index, spot, longitude, latitude, spot_id, wind_speed, wind_direction, wave_height, air_temp, water_temp, cloud_cover, gust, precipitation, visibility, wave_direction in results:
+        surf_dict = {}
+        surf_dict["index"] = index
+        surf_dict["spot"] = spot
+        surf_dict["longitude"] = longitude
+        surf_dict["latitude"] = latitude
+        surf_dict["spot_id"] = spot_id
+        surf_dict["wind_speed"] = wind_speed
+        surf_dict["wind_direction"] = wind_direction
+        surf_dict["wave_height"] = wave_height
+        surf_dict["air_temp"] = air_temp
+        surf_dict["water_temp"] = water_temp
+        surf_dict["cloud_cover"] = cloud_cover
+        surf_dict["gust"] = gust
+        surf_dict["precipitation"] = precipitation
+        surf_dict["visibility"] = visibility
+        surf_dict["wave_direction"] = wave_direction
+        surf_table.append(surf_dict)
 
-    return jsonify(all_names)
+    return jsonify(surf_table)
 # def index():
 #     conn = get_db_connection()
 #     cur = conn.cursor()
