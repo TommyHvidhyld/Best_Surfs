@@ -1,7 +1,7 @@
 /////Basic map setup
 // Initialize map options
 var caliCoords = [34, -118];
-var mapZoomLevel = 6;
+var mapZoomLevel = 7;
 
 // Create the map object with options.
 var myMap = L.map("map-id", {
@@ -42,8 +42,14 @@ d3.json(geoData).then(response => {
 
 
         // For each station, create a marker, and bind a popup with the station's name.
-        let surfMarker = L.circle([stations[index].longitude, stations[index].latitude])
-    .bindPopup("<h2>" + stations[index].spot + "<h2><h4>Wave Height: " + stations[index].wave_height + "</h4>")
+        let surfMarker = L.circle([stations[index].longitude, stations[index].latitude],  {
+            stroke: true,
+            fillOpacity: ([stations[index].wave_height / 3]),
+            color: "blue",
+            fillColor: "blue",
+            radius: ([stations[index].air_temp * 500])
+        })
+    .bindPopup("<h2>" + stations[index].spot + "<h2><h4>Wave Height: " + stations[index].wave_height +  " M</h4><h4>Air Temperature: " + stations[index].air_temp + " °C</h4><h4>Wind Speed: " + stations[index].wind_speed + " m/s</h4>")
     .addTo(myMap);
         // ;
         // Add the marker to the bikeMarkers array.
@@ -71,4 +77,4 @@ let overlayMaps = {
 // Create a layer control, and pass it baseMaps and overlayMaps. Add the layer control to the map.
 legendControl = L.control.layers(baseMaps, overlayMaps).addTo(myMap);
 
-legendControl.addOverlay(spotMarkers, "Stations");
+legendControl.addOverlay(spotMarkers, "Surf Locations");
