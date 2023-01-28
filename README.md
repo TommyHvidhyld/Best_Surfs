@@ -11,7 +11,7 @@ App for information on surf locations - Project 3
 
 # Analysis
 - Clean, modify and filter the data using Pandas and Jupyter notebook
-- Use PostgreSQL as the database
+- Use SQLlite as the database
 - HTML, CSS and JavaScript on the front end
 - Use D3, Leaflet and Bootstrap to visualize the data
 
