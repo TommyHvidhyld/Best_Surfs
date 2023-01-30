@@ -189,12 +189,6 @@ function chartCreate(spots) {
       lineWidth: 0,
       min: 0
     },
-  
-    // tooltip: {
-    //   shared: true,
-    //   pointFormat: '<span style="color:{series.color}">{series.name}: <b>${point.y:,.0f}</b><br/>'
-    // },
-  
     legend: {
       align: 'right',
       verticalAlign: 'middle',
@@ -227,148 +221,61 @@ function chartCreate(spots) {
   
   });
 
-
-  
-
-//   let radarOptions = {
-//       series: [{
-//       name: spots,
-//       data: weatherData,
-//     }
-//   ],
-//       chart: {
-//       height: 500,
-//       type: 'radar',
-//       dropShadow: {
-//         enabled: true,
-//         blur: 0,
-//         left: 1,
-//         top: 1
-//       }
-//     },
-//     plotOptions: {
-//       radar: {
-//         size: 180,
-//         polygons: {
-//           strokeColors: '#9bc7d5',
-//           fill: {
-//             colors: ['#e56d73', '#fff']
-//           }
-//         }
-//       }
-//     },
-//     title: {
-//       text: `${spots}: Location Rating`,
-//     },
-//     stroke: {
-//       width: 3,
-//       colors: ['#20b2aa']
-//     },
-//     fill: {
-//       opacity: 0.50,
-//       colors: ['#20b2aa']
-//     },
-//     markers: {
-//       size: 1,
-//       colors: ["#ffffff"]
-//     },
-//     xaxis: {
-//       categories: weatherLabels,
-//       labels:{
-//       style: {
-//         fontSize: '15px'
-//       }
-//     }
-//   }
-// };
-//   var radarChart = new ApexCharts(document.querySelector("#radar-chart"), radarOptions);
-//   radarChart.render();
-    
-// creating the donut chart to give a rating of the normalized scores for ideal surfing spots
-// Highcharts.chart('container2', {
-//   colors: ['#01BAF2', '#71BF45', '#FAA74B', '#B37CD2'],
-//   chart: {
-//       type: 'pie'
-//   },
-//   title: {
-//       text: 'Air composition'
-//   },
-  // tooltip: {
-  //     valueSuffix: '%'
-  // },
-//   plotOptions: {
-//       pie: {
-//           allowPointSelect: true,
-//           cursor: 'pointer',
-//           dataLabels: {
-//               enabled: true,
-//               format: '{point.name}: {y}'
-//           },
-//           showInLegend: true
-//       }
-//   },
-//   series: [{
-//       name: `${spot} Total Rating`,
-//       colorByPoint: true,
-//       innerSize: '75%',
-//       data: [{
-//           name: 'Nitrogen',
-//           y: 78
-//       }, {
-//           name: 'Oxygen',
-//           y: 20.9
-//       }, {
-//           name: 'Other gases',
-//           y: 1.1
-//       }]
-//   }]
-// });
-
-
-
-
-  let donutOptions = {
-    series: weatherData,
-    labels: weatherLabels,
-    chart: {
-      type: 'donut',
-      width: 600,
-      animations: {
-        enabled: true,
-        easing: 'linear',
-        speed: 8000
-    },
-    },
-    dataLabels: {
-      formatter: (val, { seriesIndex, w }) => w.config.series[seriesIndex],
-      style: {
-        fontSize: 30,
-        fontFamily: "Helvetica",
-        fontWeight: "bold"
-      }},
-    plotOptions: {
+// creating the donut chart to give a rating of the normalized scores for ideal surfing spot
+Highcharts.chart('container2', {
+  colors: ["#0fc4d0", "#9be7cb", "#00aa99", "#E48080", "#ffdd54", "#0D96BA"],
+  chart: {
+      type: 'pie'
+  },
+  title: {
+      text: `${spots}: Rating
+      ${sum}/30`,
+      verticalAlign: 'middle',
+      floating: true,
+      padding: 5
+  },
+  plotOptions: {
       pie: {
-        donut: {
-          labels: {
-            show: true,
-            total: {
-              show: true,
-              label: '',
-              formatter: () => `${spots} Surf Score: 
-                                ${sum}/30`
-            },
-            fontSize: '300px',
-            fontFamily: "Helvetica"
-          }
-        }
+          allowPointSelect: true,
+          cursor: 'pointer',
+          dataLabels: {
+              enabled: true,
+              format: '{point.name}: {y}'
+          },
+          showInLegend: true
       }
+  },
+  series: [{
+      name: `${spots} Total Rating`,
+      colorByPoint: true,
+      innerSize: '75%',
+      data: [{
+          name: weatherLabels[0],
+          y: weatherData[0]
+      }, {
+          name: weatherLabels[1],
+          y: weatherData[1]
+      }, {
+          name: weatherLabels[2],
+          y: weatherData[2]
+      },
+      {
+        name: weatherLabels[3],
+        y: weatherData[3]
+      },
+      {
+      name: weatherLabels[4],
+      y: weatherData[4]
     },
-    colors:["#0fc4d0", "#9be7cb", "#00aa99", "#E48080", "#ffdd54", "#0D96BA"]
-  };
-  var donutChart = new ApexCharts(document.querySelector("#donut-chart"), donutOptions)
-  donutChart.render();
-  return weather;
-  })};
+    {
+    name: weatherLabels[5],
+    y: weatherData[5]
+    }
+  ]
+  }]
+});
+
+})};
 
 // this activates when someone selects a spot from the dropdown
 function optionChanged(spots) {
