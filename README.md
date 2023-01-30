@@ -2,8 +2,8 @@
 App for information on surf locations - Project 3
 
 # Description
->
->
+>We compiled the most popular and known surf locations in California to create an application showing the forecast for each location.
+>The data we used was Wave Height, Air Temperature, Wind Speed, Water Temperature, Cloud Cover, and Visibility.
 
 # Data Sources
 - [stormglass.io | Global Weather API](https://stormglass.io/)
