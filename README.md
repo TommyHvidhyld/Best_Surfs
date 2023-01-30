@@ -20,7 +20,7 @@ App for information on surf locations - Project 3
 - [Python](https://www.python.org/)
 - [Flask](https://flask.palletsprojects.com/en/2.2.x/)
 - [Leaflet](https://leafletjs.com/)
-- [APEXCHARTS.JS](https://apexcharts.com/)
+- [Highcharts.JS](https://www.highcharts.com/)
 - [Bootstrap](https://getbootstrap.com/)
 - [d3](https://d3js.org/)
 
