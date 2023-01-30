@@ -13,7 +13,7 @@ App for information on surf locations - Project 3
 - Clean, modify and filter the data using Pandas and Jupyter notebook
 - Use SQLlite as the database
 - HTML, CSS and JavaScript on the front end
-- Use D3, Leaflet and Bootstrap to visualize the data
+- Use D3, Leaflet, Highcharts.JS and Bootstrap to visualize the data
 
 # Built With
 - [Pandas](https://pandas.pydata.org/)
