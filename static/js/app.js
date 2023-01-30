@@ -1,7 +1,7 @@
 // setting up url from our render file
 const url = "https://surf-app.onrender.com/api/v1.0/surf"
 
-// selecting the data for the dropdown
+// populating all surf spot locations into the dropdown
 d3.json(url).then(function(data) {
   let selected = d3.select("#selDataset");
   console.log(data)
@@ -13,19 +13,33 @@ d3.json(url).then(function(data) {
 // what we want to do: create a chart when new surf spot is selected
 function chartCreate(spots) {
   d3.json(url).then(function(data){
+    
+    //finding the index of the selected spot
     let spotIndex = data.findIndex(data => data.spot === spots);
+    
+    // calling upon the array by the index
     let weather = data[spotIndex];
+    
+    // creating empty arrays to hold the data and labels as we loop
     let weatherData = [];
     let weatherLabels = [];
+    
+    // designating what labels we want dropped as they are not going to be shown in the charts
     let removeValFrom = [2,3, 4, 5, 6, 7,8,11,13];
+    
+    // drawing out the keys for the labels and add to new array weatherLabels
     for (const key in weather) {
       {
       weatherLabels.push(key)
       }
     };
+    
+    // filtering out unwanted labels
     weatherLabels= weatherLabels.filter(function(value, index) {
       return removeValFrom.indexOf(index) == -1;
     });
+    
+    // beginning loop to go through weather object by key and then normalize the values which we then push to weatherData
     for (let [key, value] of Object.entries(weather)) {
       if (key == "air_temp") {
         if (value <= 10.00 || value >= 43.00 ) 
@@ -154,12 +168,15 @@ function chartCreate(spots) {
         }
       }
     };
+    
+   // creating sum value to use for middle of donut chart to give a score
     let sum = 0;
     weatherData.forEach(item => {
         sum += item;
     });
   console.log(sum);
-  // calling in the name of the surf locale (spots) and data normalized (weatherData) into the radar chart  
+    
+  // calling in the name of the surf locale (spots) and data normalized (weatherData) into the radar spider chart  
   Highcharts.chart('container', {
 
     chart: {
@@ -167,7 +184,7 @@ function chartCreate(spots) {
       type: 'line'
     },
   
-  
+  // calling spots into the title to populate title dynamically
     title: {
       text: `${spots}: Surf Radar Chart`,
       x: 0
@@ -194,6 +211,7 @@ function chartCreate(spots) {
       layout: 'vertical'
     },
   
+    // calling in the weatherData for the spot selected and naming the line for the series legend
     series: [{
       name: `${spots} Score`,
       data: weatherData,
@@ -244,6 +262,7 @@ Highcharts.chart('container2', {
           showInLegend: true
       }
   },
+  // calling in the weatherLabels and weatherData by index
   series: [{
       name: `${spots} Total Rating`,
       colorByPoint: true,
