@@ -1,5 +1,5 @@
 # Surf_App
-App for information on surf locations - Project 3
+[img](https://github.com/TommyHvidhyld/Surf_App/blob/Jenny_new/static/img/waves.png)
 
 Website Link: https://tommyhvidhyld.github.io/Surf_App/
 
